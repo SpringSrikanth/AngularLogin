@@ -1,0 +1,17 @@
+<div class="container" style="margin: 20px;margin-top: 50px;">
+    <h3>User Login</h3>
+    <form class="form row" [formGroup]="form" (ngSubmit)="submit()">
+        <div>
+            <label for="lemail" class="form-label">Email</label>
+            <input type="text" id="lemail" formControlName="email" class="form-control form-control-sm"/>
+        </div>
+        <div>
+            <label for="lemail"  class="form-label">Password</label>
+            <input type="password" id="lemail" formControlName="password" class="form-control form-control-sm"/>
+        </div>
+        <div style="margin-top: 10px;">
+            <button type="submit" class="btn btn-primary" [disabled]="!form.valid">Submit</button>
+            <button type="reset" style="margin-left: 10px;" class="btn btn-light" >Reset</button>
+        </div>
+    </form>
+</div>
