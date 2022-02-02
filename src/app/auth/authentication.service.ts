@@ -11,10 +11,10 @@ export class AuthenticationService {
   constructor(private http:HttpClient,private router:Router) { }
 
   public get isUserLoggedIn(){
-    return (localStorage.getItem('token')!==null);
+    return !!(localStorage.getItem('token'));
   }
 
-  public login(userPayload){
+  public login(userPayload:any){
     return this.http.post('http://localhost:3000/signin',userPayload,{headers:this.headers}).subscribe((res:any)=>{
       localStorage.setItem('token',res?.token);
       this.router.navigate(['/home'])

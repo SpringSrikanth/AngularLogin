@@ -1,1 +1,80 @@
-<p>sign-up works!</p>
+<!-- <p>sign-up works!</p> -->
+<body>
+    <div>
+        <h3 style="font-family: sans-serif;text-align: center;">User Signup</h3>
+    </div>
+    <div class="form, signUp">
+        <form action="" [formGroup]="signUpForm" (ngSubmit)="onSubmitSignUpForm()">
+            <div class="row">
+                <div class="col-6">
+                    <label for="firstName">First Name:</label>
+                    <input type="text" id="firstName" class="form-control" formControlName="firstName" placeholder="Enter first name..">
+                    <div *ngIf="getFirstName().touched && getFirstName().invalid">
+                        <div *ngIf="getFirstName()?.errors?.required">
+                            <span class="text-danger">First name required</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <label for="lastName">Last Name:</label>
+                    <input type="text" id="lastName" class="form-control" formControlName="lastName" placeholder="Enter last name..">
+                    <div *ngIf="getLastName().touched && getLastName().invalid">
+                        <div *ngIf="getLastName()?.errors?.required">
+                            <span class="text-danger">Last Name required</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="styling">
+                Gender: 
+                <input type="radio" id="male" value="Male" formControlName="gender"><label for="male">Male </label>
+                <input type="radio" id="female" value="Female" formControlName="gender"><label for="female">Female </label>
+                <input type="radio" id="others" value="Others" formControlName="gender"><label for="others">Others </label>
+                <div *ngIf="getGender().touched && getGender().invalid">
+                    <div *ngIf="getGender()?.errors?.required">
+                        <span class="text-danger">Gender required</span>
+                    </div>
+                </div>
+            </div>
+            <div class="styling">
+                <label for="dateOfBirth">Date of Birth: </label>
+                <input type="date" id="dateOfBirth" formControlName="dateOfBirth">
+                <div *ngIf="getDateOfBirth().touched && getDateOfBirth().invalid">
+                    <div *ngIf="getDateOfBirth()?.errors?.required">
+                        <span class="text-danger">Date of birth required</span>
+                    </div>
+                </div>
+            </div>
+            <span>
+                <div class="styling">
+                    <label for="email">Email: </label>
+                    <input type="email" id="email" placeholder="Enter your email.." class="form-control" formControlName="email">
+                    <div *ngIf="getEmail().touched && getEmail().invalid">
+                        <div *ngIf="getEmail()?.errors?.required">
+                            <span class="text-danger">Email required</span>
+                        </div>
+                        <div *ngIf="getEmail()?.errors?.email">
+                            <span class="text-danger">Enter valid email</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="styling">
+                    <label for="password">Password: </label>
+                    <input type="password" id="password" formControlName="password" class="form-control" placeholder="Enter your password..">
+                    <div *ngIf="getPassword().touched && getPassword().invalid">
+                        <div *ngIf="getPassword()?.errors?.required">
+                            <span class="text-danger">Password required</span>
+                        </div>
+                    </div>
+                </div>
+            </span>
+            <div class="styling">
+                <button type="submit" class="btn btn-primary, submitForm" [disabled]="!this.signUpForm.valid">Submit</button>
+                <button type="reset" class="btn btn-light">Reset</button>
+                <div>
+                    <span>Already have an account? <a routerLink="/login">Login</a></span>
+                </div>
+            </div>
+        </form>
+    </div>
+</body>
