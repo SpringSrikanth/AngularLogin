@@ -11,7 +11,7 @@ export class AppComponent implements OnInit {
   title = 'angularlogin';
   
   public get isUserLoggedIn(){
-    return this.api.isUserLoggedIn;
+    return this.api.isUserLoggedIn || false;
   }
   constructor(private api:AuthenticationService,private router:Router){}
 
